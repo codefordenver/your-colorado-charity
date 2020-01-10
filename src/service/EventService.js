@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const CALENDAR_ID = 'jp9uls15099ng5bqjejv5i3bvk@group.calendar.google.com'
-const API_KEY = 'AIzaSyD4QGqMbsxJ1T5bVjk0VifPS7SubCkSJaw'
+const API_KEY = process.env.REACT_APP_CALENDAR_API_KEY
 let url = `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR_ID}/events?key=${API_KEY}`
 
 export class EventService {
