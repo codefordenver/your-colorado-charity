@@ -5,6 +5,7 @@ import {FullCalendar} from 'primereact/fullcalendar';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import timeGridPlugin from '@fullcalendar/timegrid';
+import { EventService } from '../service/EventService';
 
 
 function ShowCalendar(props) {
@@ -102,12 +103,17 @@ export class OxfordHouse extends Component {
                 }
             ]
         };
+        this.eventService = new EventService();
     }
 
     toggleCalendarClick() {
         this.setState(state => ({
             onToggleCalendar: !state.onToggleCalendar
         }));
+    }
+
+    componentDidMount() {
+        this.eventService.getEvents().then(data => console.log(data));
     }
 
     render() {   
