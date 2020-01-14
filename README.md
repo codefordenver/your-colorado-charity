@@ -1,5 +1,4 @@
 # [yourcolorado.charity](http://yourcolorado.charity)
-## Summary
 ### Goal of the project
 - Provide a simple, easy to manage, website for non-profits that wouldn't otherwise be able to afford one and that don't have a significant IT budget.
 
