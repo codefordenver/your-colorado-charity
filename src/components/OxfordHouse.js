@@ -113,7 +113,8 @@ export class OxfordHouse extends Component {
     }
 
     componentDidMount() {
-        this.eventService.getEvents().then(data => console.log(data));
+        // Call getEvents method from Event Service and set state events: to updated array -- Will overwrite the initial data above --RCM
+        this.setState({events: this.eventService.getEvents()});
     }
 
     render() {   

@@ -6,23 +6,24 @@ let url = `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR_ID}/event
 
 export class EventService {
     // attempting to load data directly from google calendar api -- RCM
-    /* getEvents() {
-        return axios.get('assets/demo/data/scheduleevents.json')
-            .then(res => res.data.data);
-    }*/
-
     getEvents() {
-        return axios.get(url)
-            .then(res => console.log(res))
-    }
-}
+        // Setting initial dataset to match Bill's demo - Will update this later this week -- RCM
+        let eventData = [{"id": 1, "title": "All Day Event", "start": "2020-01-01"}, {"id": 2, "title": "Long Event", "start": "2020-01-07", "end": "2020-01-10"}, {"id": 3, "title": "Repeating Event", "start": "2020-01-09T16:00:00"}, {"id": 4, "title": "Repeating Event", "start": "2020-01-16T16:00:00"}, {"id": 5, "title": "Conference", "start": "2020-01-11", "end": "2020-01-13"}, {"id": 6, "title": "Meeting", "start": "2020-01-12T10:30:00", "end": "2020-01-12T12:30:00"}, {"id": 7, "title": "Lunch", "start": "2020-01-12T12:00:00"}, {"id": 8, "title": "Meeting", "start": "2020-01-12T14:30:00"}, {"id": 9, "title": "Happy Hour", "start": "2020-01-12T17:30:00"}, {"id": 10, "title": "Dinner", "start": "2020-01-12T20:00:00"}, {"id": 11, "title": "Holiday Party", "start": "2020-01-06T17:00:00"}, {"id": 12, "title": "Click for Google", "url": "http://google.com/", "start": "2020-01-28"}];
+        let allEvents = eventData;
+        
+        // axios use URL to call Google api and map returned data to the same structure as calendar -- RCM
+        axios.get(url).then(res => {
+            res.data.items.map(event => {
+                return allEvents.push({
+                    "id": event.id, 
+                    "title": event.summary, 
+                    "start": event.start.date || event.start.dateTime, 
+                    "end": event.end.date || event.end.dateTime,
+                    color: 'red'
+                })
+            })
+        });
 
-// example of remote resource call for reference -- RCM
-/*axios.get('https://api.github.com/users/mapbox')
-  .then((response) => {
-    console.log(response.data);
-    console.log(response.status);
-    console.log(response.statusText);
-    console.log(response.headers);
-    console.log(response.config);
-  });*/
+        return allEvents;
+    }
+};
