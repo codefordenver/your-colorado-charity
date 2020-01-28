@@ -4,6 +4,39 @@ const CALENDAR_ID = 'jp9uls15099ng5bqjejv5i3bvk@group.calendar.google.com'
 const API_KEY = process.env.REACT_APP_CALENDAR_API_KEY
 let url = `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR_ID}/events?key=${API_KEY}`
 
+class Event {
+    constructor(id, title, start, end, provider = 'local') {
+        this._id = id;
+        this._title = title;
+        this._start = start;
+        this._end = end;
+        switch(provider) {
+            case 'google':
+                this._color = 'red';
+                break;
+            default:
+                this._color = 'blue';
+                break;
+        }
+
+      }
+      get id() {
+        return this._id;
+      }
+      get title() {
+        return this._id;
+      }
+      get start() {
+        return this._id;
+      }
+      get end() {
+        return this._id;
+      }
+      get color() {
+        return this._color;
+      } 
+}
+
 export class EventService {
     // attempting to load data directly from google calendar api -- RCM
     getEvents() {
