@@ -4,9 +4,9 @@ import {AppTopbar} from './AppTopbar';
 import {AppFooter} from './AppFooter';
 import {AppMenu} from './AppMenu';
 import {Route} from 'react-router-dom';
-import {OxfordHouse} from './components/OxfordHouse';
-import {CarouselDemo} from './components/CarouselDemo';
-import {Documentation} from "./components/Documentation";
+// import {OxfordHouse} from './components/OxfordHouse';
+// import {CarouselDemo} from './components/CarouselDemo';
+// import {Documentation} from "./components/Documentation";
 import 'primereact/resources/themes/nova-light/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
@@ -17,7 +17,7 @@ import '@fullcalendar/timegrid/main.css';
 import './layout/layout.scss';
 import './App.scss';
 
-class App extends Component {
+class CharityLayout extends Component {
 
     constructor() {
         super();
@@ -164,9 +164,7 @@ class App extends Component {
                 </div>
 
                 <div className="layout-main">
-                    <Route path="/" component={CarouselDemo}/>
-                    <Route path="/oxfordhouse" component={OxfordHouse} />
-                    <Route path="/documentation" component={Documentation} />
+                    <Route path="oxfordhouse" component={CharityLayout} />
                 </div>
 
                 <AppFooter />
@@ -177,4 +175,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default CharityLayout;

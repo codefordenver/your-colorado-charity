@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 //import {Button} from 'primereact/button';
 import { Carousel } from 'primereact/carousel';
-import CharityService from '../service/CharityService';
+import CharityService from '../service/CharityService.js';
 
 export const CarouselDemo = () => {
     // creating the charities variable in state, initiat state is an empty array
@@ -10,9 +10,9 @@ export const CarouselDemo = () => {
     
     // setting the charities data when there is data
     useEffect(() => {
-        CharityService.getCharities()
-        .then(data => setCharities(data))
-        .catch(err => console.log(err))
+        CharityService.getCharitiesSmall()
+            .then(data => setCharities(data))
+            .catch(err => console.log(err))
         // empty array acts as "componentDidMount"
     }, []);
 
@@ -35,22 +35,21 @@ export const CarouselDemo = () => {
     ];
 
     const charityTemplate = (charity) => {
-        // var logo = "assets/demo/images/charity/" + charity.image_name + ".png";
+        var logo = "assets/demo/images/charity/" + charity.image_name + ".png";
         // const imageClick = () => {
         //     window.location = charity.location;
         // }
-        console.log(charity);
-
+        // onClick={() => imageClick() }
+        
         return (
             <div className="charity-details">
                 <div className="p-grid p-nogutter">
-                    {/* <div className="p-col-12">
-                        <img src={logo} alt={charity.name} onClick={() => imageClick()} height="50" width="150" />
-                    </div> */}
+                    <div className="p-col-12">
+                        <img src={logo} alt={charity.name} height="50" width="150" />  
+                    </div>
                     <div className="p-col-12 charity-data">
-                        <div className="charity-image">{charity.image_name}</div>
                         <div className="charity-title">{charity.name}</div>
-                        <div className="charity-subtitle">{charity.year}</div>
+                        <div className="charity-subtitle">{charity.year}  {charity.location}</div>
 
                         {/* <div className="charity-buttons">
                                         <Button icon="pi pi-home" className="p-button-secondary" />

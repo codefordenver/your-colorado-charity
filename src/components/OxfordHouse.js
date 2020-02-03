@@ -28,7 +28,7 @@ export class OxfordHouse extends Component {
             tasks: [],
             fullcalendarOptions: {
                 plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
-                defaultDate: '2020-01-01',
+                defaultDate: '2020-02-01',
                 header: {
                     left: 'prev,next today',
                     center: 'title',
@@ -40,66 +40,66 @@ export class OxfordHouse extends Component {
                 {
                     "id": 1,
                     "title": "All Day Event",
-                    "start": "2020-01-01"
+                    "start": "2020-02-01"
                 },
                 {
                     "id": 2,
                     "title": "Long Event",
-                    "start": "2020-01-07",
-                    "end": "2020-01-10"
+                    "start": "2020-02-07",
+                    "end": "2020-02-10"
                 },
                 {
                     "id": 3,
                     "title": "Repeating Event",
-                    "start": "2020-01-09T16:00:00"
+                    "start": "2020-02-09T16:00:00"
                 },
                 {
                     "id": 4,
                     "title": "Repeating Event",
-                    "start": "2020-01-16T16:00:00"
+                    "start": "2020-02-16T16:00:00"
                 },
                 {
                     "id": 5,
                     "title": "Conference",
-                    "start": "2020-01-11",
-                    "end": "2020-01-13"
+                    "start": "2020-02-11",
+                    "end": "2020-02-13"
                 },
                 {
                     "id": 6,
                     "title": "Meeting",
-                    "start": "2020-01-12T10:30:00",
-                    "end": "2020-01-12T12:30:00"
+                    "start": "2020-02-12T10:30:00",
+                    "end": "2020-02-12T12:30:00"
                 },
                 {
                     "id": 7,
                     "title": "Lunch",
-                    "start": "2020-01-12T12:00:00"
+                    "start": "2020-02-12T12:00:00"
                 },
                 {
                     "id": 8,
                     "title": "Meeting",
-                    "start": "2020-01-12T14:30:00"
+                    "start": "2020-02-12T14:30:00"
                 },
                 {
                     "id": 9,
                     "title": "Happy Hour",
-                    "start": "2020-01-12T17:30:00"
+                    "start": "2020-02-12T17:30:00"
                 },
                 {
                     "id": 10,
                     "title": "Dinner",
-                    "start": "2020-01-12T20:00:00"
+                    "start": "2020-02-12T20:00:00"
                 },
                 {
                     "id": 11,
                     "title": "Holiday Party",
-                    "start": "2020-01-06T17:00:00"
+                    "start": "2020-02-06T17:00:00"
                 },
                 {
                     "id": 12,
                     "title": "Click for Google",
                     "url": "http://google.com/",
-                    "start": "2020-01-28"
+                    "start": "2020-02-28"
                 }
             ]
         };
