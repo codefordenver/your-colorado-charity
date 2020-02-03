@@ -8,7 +8,6 @@
     "url": "https://github.com/"
   },
   "license": "MIT",
-  "proxy": "https://drive.google.com/",
   "dependencies": {
     "@fullcalendar/core": "4.0.2",
     "@fullcalendar/daygrid": "4.0.1",
