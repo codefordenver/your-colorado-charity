@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {Panel} from 'primereact/panel';
 import {Accordion, AccordionTab} from 'primereact/accordion';
-import {FullCalendar} from 'primereact/fullcalendar';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import interactionPlugin from '@fullcalendar/interaction';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import { EventService } from '../service/EventService';
+// import {FullCalendar} from 'primereact/fullcalendar';
+// import dayGridPlugin from '@fullcalendar/daygrid';
+// import interactionPlugin from '@fullcalendar/interaction';
+// import timeGridPlugin from '@fullcalendar/timegrid';
+import { Calendar } from './Calendar';
 
 
 function ShowCalendar(props) {
@@ -14,7 +14,7 @@ function ShowCalendar(props) {
     }
     return (
         <Panel style={{height: '100%'}}> 
-            <FullCalendar events={props.calendarEvents} options={props.calendarOptions}></FullCalendar>
+            <Calendar />
         </Panel>
     );
 }
@@ -24,97 +24,12 @@ export class OxfordHouse extends Component {
         super(props);
         this.toggleCalendarClick = this.toggleCalendarClick.bind(this);
         this.state = {
-            showCalendar: false,
-            tasks: [],
-            fullcalendarOptions: {
-                plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
-                defaultDate: '2020-02-01',
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
-                },
-                editable: true
-            },
-            events: [
-                {
-                    "id": 1,
-                    "title": "All Day Event",
-                    "start": "2020-02-01"
-                },
-                {
-                    "id": 2,
-                    "title": "Long Event",
-                    "start": "2020-02-07",
-                    "end": "2020-02-10"
-                },
-                {
-                    "id": 3,
-                    "title": "Repeating Event",
-                    "start": "2020-02-09T16:00:00"
-                },
-                {
-                    "id": 4,
-                    "title": "Repeating Event",
-                    "start": "2020-02-16T16:00:00"
-                },
-                {
-                    "id": 5,
-                    "title": "Conference",
-                    "start": "2020-02-11",
-                    "end": "2020-02-13"
-                },
-                {
-                    "id": 6,
-                    "title": "Meeting",
-                    "start": "2020-02-12T10:30:00",
-                    "end": "2020-02-12T12:30:00"
-                },
-                {
-                    "id": 7,
-                    "title": "Lunch",
-                    "start": "2020-02-12T12:00:00"
-                },
-                {
-                    "id": 8,
-                    "title": "Meeting",
-                    "start": "2020-02-12T14:30:00"
-                },
-                {
-                    "id": 9,
-                    "title": "Happy Hour",
-                    "start": "2020-02-12T17:30:00"
-                },
-                {
-                    "id": 10,
-                    "title": "Dinner",
-                    "start": "2020-02-12T20:00:00"
-                },
-                {
-                    "id": 11,
-                    "title": "Holiday Party",
-                    "start": "2020-02-06T17:00:00"
-                },
-                {
-                    "id": 12,
-                    "title": "Click for Google",
-                    "url": "http://google.com/",
-                    "start": "2020-02-28"
-                }
-            ]
-        };
-        this.eventService = new EventService();
-    }
+            showCalendar: false}}
 
     toggleCalendarClick() {
         this.setState(state => ({
             onToggleCalendar: !state.onToggleCalendar
         }));
-    }
-
-    componentDidMount() {
-        // Call getEvents method from Event Service and set state events: to updated array -- Will overwrite the initial data above --RCM
-        this.setState({events: this.eventService.getEvents()});
     }
 
     render() {   
@@ -151,7 +66,7 @@ export class OxfordHouse extends Component {
 
                 </div>
 
-                <ShowCalendar show={this.state.onToggleCalendar} calendarEvents={this.state.events} calendarOptions={this.state.fullcalendarOptions}/>
+                <ShowCalendar show={this.state.onToggleCalendar} />
 
             </div>
         );
