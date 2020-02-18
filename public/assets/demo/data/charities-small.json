@@ -9,7 +9,7 @@
             "name": "Oxford House",
             "year": 1975,
             "image_name": "oxford_house_logo",
-            "component": "#/OxfordHouse"
+            "component": "/oxfordhouse"
         },
         {
             "name": "Denver Public Library",
