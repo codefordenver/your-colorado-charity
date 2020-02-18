@@ -36,19 +36,20 @@ export const CarouselDemo = () => {
 
     const charityTemplate = (charity) => {
         var logo = "assets/demo/images/charity/" + charity.image_name + ".png";
-        const imageClick = () => {
-            window.location = charity.location;
-        }
-
+        // const imageClick = () => {
+        //     window.location = charity.location;
+        // }
+        // onClick={() => imageClick() }
+        
         return (
             <div className="charity-details">
                 <div className="p-grid p-nogutter">
                     <div className="p-col-12">
-                        <img src={logo} alt={charity.name} onClick={() => imageClick()} height="50" width="150" />
+                        <img src={logo} alt={charity.name} height="50" width="150" />  
                     </div>
                     <div className="p-col-12 charity-data">
                         <div className="charity-title">{charity.name}</div>
-                        <div className="charity-subtitle">{charity.year}</div>
+                        <div className="charity-subtitle">{charity.year}  {charity.location}</div>
 
                         {/* <div className="charity-buttons">
                                         <Button icon="pi pi-home" className="p-button-secondary" />
