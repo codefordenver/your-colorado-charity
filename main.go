@@ -3,18 +3,15 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
-	"strings"
 
-	"github.com/codefordenver/your-colorado-charity/db"
+	// "github.com/codefordenver/your-colorado-charity/db"
+	"github.com/codefordenver/your-colorado-charity/server"
 	_ "github.com/go-sql-driver/mysql"
 	"golang.org/x/net/context"
 	"golang.org/x/oauth2"
-	"golang.org/x/oauth2/google"
-	"google.golang.org/api/sheets/v4"
 )
 
 // Retrieve a token, saves the token, then returns the generated client.
@@ -73,61 +70,64 @@ func saveToken(path string, token *oauth2.Token) {
 }
 
 func main() {
-	b, err := ioutil.ReadFile("credentials2.json")
-	if err != nil {
-		log.Fatalf("Unable to read client secret file: %v", err)
-	}
+	// b, err := ioutil.ReadFile("credentials2.json")
+	// if err != nil {
+	// 	log.Fatalf("Unable to read client secret file: %v", err)
+	// }
 
-	// If modifying these scopes, delete your previously saved token.json.
-	config, err := google.ConfigFromJSON(b, "https://www.googleapis.com/auth/spreadsheets.readonly")
-	if err != nil {
-		log.Fatalf("Unable to parse client secret file to config: %v", err)
-	}
-	client := getClient(config)
+	// // If modifying these scopes, delete your previously saved token.json.
+	// config, err := google.ConfigFromJSON(b, "https://www.googleapis.com/auth/spreadsheets.readonly")
+	// if err != nil {
+	// 	log.Fatalf("Unable to parse client secret file to config: %v", err)
+	// }
+	// client := getClient(config)
 
-	srv, err := sheets.New(client)
-	if err != nil {
-		log.Fatalf("Unable to retrieve Sheets client: %v", err)
-	}
+	// srv, err := sheets.New(client)
+	// if err != nil {
+	// 	log.Fatalf("Unable to retrieve Sheets client: %v", err)
+	// }
 
-	//https://docs.google.com/spreadsheets/d/1IlpUip5zeDDZHfih7tF8Cugu9pqoYPKHq7mSMnbq5vs/edit?usp=sharing
-	spreadsheetID := "1IlpUip5zeDDZHfih7tF8Cugu9pqoYPKHq7mSMnbq5vs"
-	readRange := "Config!A1:B"
-	resp, err := srv.Spreadsheets.Values.Get(spreadsheetID, readRange).Do()
-	if err != nil {
-		log.Fatalf("Unable to retrieve data from sheet: %v", err)
-	}
+	// //https://docs.google.com/spreadsheets/d/1IlpUip5zeDDZHfih7tF8Cugu9pqoYPKHq7mSMnbq5vs/edit?usp=sharing
+	// spreadsheetID := "1IlpUip5zeDDZHfih7tF8Cugu9pqoYPKHq7mSMnbq5vs"
+	// readRange := "Config!A1:B"
+	// resp, err := srv.Spreadsheets.Values.Get(spreadsheetID, readRange).Do()
+	// if err != nil {
+	// 	log.Fatalf("Unable to retrieve data from sheet: %v", err)
+	// }
 
-	// var fields, values string
-	var charity string
-	if len(resp.Values) == 0 {
-		fmt.Println("No data found.")
-	} else {
-		// for _, row := range resp.Values {
-		// 	fields = fmt.Sprintf("%s, data_%s", fields, row[0])
-		// 	value := strings.ReplaceAll(fmt.Sprintf("%s", row[1]), "\"", "'")
-		// 	value = strings.ReplaceAll(fmt.Sprintf("%s", value), "\n", "")
-		// 	values = fmt.Sprintf("%s, \"%s\"", values, value)
-		// }
-		// fields = strings.Replace(fields, ", ", "", 1)
-		// values = strings.Replace(values, ", ", "", 1)
+	// // var fields, values string
+	// var charity string
+	// if len(resp.Values) == 0 {
+	// 	fmt.Println("No data found.")
+	// } else {
+	// 	// for _, row := range resp.Values {
+	// 	// 	fields = fmt.Sprintf("%s, data_%s", fields, row[0])
+	// 	// 	value := strings.ReplaceAll(fmt.Sprintf("%s", row[1]), "\"", "'")
+	// 	// 	value = strings.ReplaceAll(fmt.Sprintf("%s", value), "\n", "")
+	// 	// 	values = fmt.Sprintf("%s, \"%s\"", values, value)
+	// 	// }
+	// 	// fields = strings.Replace(fields, ", ", "", 1)
+	// 	// values = strings.Replace(values, ", ", "", 1)
 
-		// fmt.Printf("%d \n", len(values))
-		// fmt.Printf("INSERT INTO milehigh_ycc.ycc_data (%s) VALUES (%s)", fields, values)
-		// fmt.Printf(fields, values)
+	// 	// fmt.Printf("%d \n", len(values))
+	// 	// fmt.Printf("INSERT INTO milehigh_ycc.ycc_data (%s) VALUES (%s)", fields, values)
+	// 	// fmt.Printf(fields, values)
 
-		for _, row := range resp.Values {
-			var key, val string
-			key = strings.ReplaceAll(fmt.Sprintf("%s", row[0]), "\"", "'")
-			val = strings.ReplaceAll(fmt.Sprintf("%s", row[1]), "\"", "'")
-			val = strings.ReplaceAll(fmt.Sprintf("%s", val), "\n", "")
-			charity = charity + `"` + key + `": "` + val + `", `
-		}
+	// 	for _, row := range resp.Values {
+	// 		var key, val string
+	// 		key = strings.ReplaceAll(fmt.Sprintf("%s", row[0]), "\"", "'")
+	// 		val = strings.ReplaceAll(fmt.Sprintf("%s", row[1]), "\"", "'")
+	// 		val = strings.ReplaceAll(fmt.Sprintf("%s", val), "\n", "")
+	// 		charity = charity + `"` + key + `": "` + val + `", `
+	// 	}
 
-		charity = strings.TrimSuffix(charity, ", ")
-		charity = "{" + charity + "}"
-		// insertCharity := db.InsertCharity(charity)
-		// fmt.Println(insertCharity)
-	}
-	db.SelectAllCharities()
+	// 	charity = strings.TrimSuffix(charity, ", ")
+	// 	charity = "{" + charity + "}"
+	// 	// insertCharity := db.InsertCharity(charity)
+	// 	// fmt.Println(insertCharity)
+	// }
+	// db.SelectAllCharities()
+	// response := db.SelectCharity(1)
+
+	server.ServerConnect()
 }

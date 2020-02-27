@@ -1,7 +1,8 @@
 package db
 
+import "encoding/json"
+
 type CharityJSON struct {
-	CharityID       int64
 	BackgroundColor string
 	ForegroundColor string
 	TextColor       string
@@ -17,5 +18,5 @@ type CharityJSON struct {
 
 type Charity struct {
 	CharityID int
-	Data      string
+	Data      json.RawMessage
 }
