@@ -2,12 +2,11 @@ package db
 
 import (
 	"encoding/json"
-	"fmt"
 
 	_ "github.com/go-sql-driver/mysql"
 )
 
-func SelectAllCharities() (res []Charity) {
+func SelectAllCharities() (res *CharitiesList) {
 	db := ConnectDB()
 
 	defer db.Close()
@@ -17,11 +16,11 @@ func SelectAllCharities() (res []Charity) {
 		panic(err.Error())
 	}
 
-	var (
-		charity  Charity
-		response []Charity
-	)
+	charities := []Charity{}
+	response := &CharitiesList{charities}
+
 	for selDB.Next() {
+		charity := Charity{}
 		var charityid int
 		var data json.RawMessage
 		err = selDB.Scan(&charityid, &data)
@@ -29,15 +28,14 @@ func SelectAllCharities() (res []Charity) {
 			panic(err.Error())
 		}
 		charity.CharityID = charityid
-		charity.Data = data
-		response = append(res, charity)
+		charity.Data = json.RawMessage(data)
+		response.AddCharity(charity)
 	}
-	fmt.Println(response)
 	defer selDB.Close()
 	return response
 }
 
-func SelectCharity(charityID int) (jsonRes *CharityJSON) {
+func SelectCharity(charityID int) (response *Charity) {
 	db := ConnectDB()
 
 	defer db.Close()
@@ -47,21 +45,18 @@ func SelectCharity(charityID int) (jsonRes *CharityJSON) {
 		panic(err.Error())
 	}
 
-	var charityRes string
+	charity := &Charity{}
 	for selDB.Next() {
 		var data string
 		var charityid int
 		err = selDB.Scan(&charityid, &data)
+		charityJson := &CharityJSON{}
+		err = json.Unmarshal([]byte(data), charityJson)
 		if err != nil {
 			panic(err.Error())
 		}
-		charityRes = data
+		charity.CharityID = charityid
+		charity.Data = json.RawMessage(data)
 	}
-	jsonRes = &CharityJSON{}
-	err = json.Unmarshal([]byte(charityRes), jsonRes)
-	if err != nil {
-		panic(err.Error())
-	}
-	return jsonRes
-
+	return charity
 }

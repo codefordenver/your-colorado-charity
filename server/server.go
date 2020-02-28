@@ -2,10 +2,11 @@ package server
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
+	"strconv"
 
-	// "strconv"
 	"github.com/codefordenver/your-colorado-charity/db"
 	"github.com/gorilla/mux"
 )
@@ -89,10 +90,26 @@ func notFound(w http.ResponseWriter, r *http.Request) {
 // }
 
 func getAllCharities(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
 	charities := db.SelectAllCharities()
 	json.NewEncoder(w).Encode(charities)
 }
 
+func getCharity(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	charityID := mux.Vars(r)["id"]
+	fmt.Println(charityID)
+	i1, err := strconv.Atoi(charityID)
+	if err != nil {
+		panic(err.Error())
+	}
+	fmt.Println(i1)
+	charity := db.SelectCharity(i1)
+	json.NewEncoder(w).Encode(charity)
+
+}
 func ServerConnect() {
 	r := mux.NewRouter()
 	api := r.PathPrefix("/api").Subrouter()
@@ -101,6 +118,7 @@ func ServerConnect() {
 	api.HandleFunc("", put).Methods(http.MethodPut)
 	api.HandleFunc("", delete).Methods(http.MethodDelete)
 	api.HandleFunc("/charities", getAllCharities).Methods(http.MethodGet)
+	api.HandleFunc("/charity/{id}", getCharity).Methods(http.MethodGet)
 	api.HandleFunc("", notFound)
 	log.Fatal(http.ListenAndServe(":8080", r))
 }

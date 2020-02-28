@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"os"
 
-	// "github.com/codefordenver/your-colorado-charity/db"
 	"github.com/codefordenver/your-colorado-charity/server"
 	_ "github.com/go-sql-driver/mysql"
 	"golang.org/x/net/context"
@@ -87,7 +86,7 @@ func main() {
 	// 	log.Fatalf("Unable to retrieve Sheets client: %v", err)
 	// }
 
-	// //https://docs.google.com/spreadsheets/d/1IlpUip5zeDDZHfih7tF8Cugu9pqoYPKHq7mSMnbq5vs/edit?usp=sharing
+	// // https://docs.google.com/spreadsheets/d/1IlpUip5zeDDZHfih7tF8Cugu9pqoYPKHq7mSMnbq5vs/edit?usp=sharing
 	// spreadsheetID := "1IlpUip5zeDDZHfih7tF8Cugu9pqoYPKHq7mSMnbq5vs"
 	// readRange := "Config!A1:B"
 	// resp, err := srv.Spreadsheets.Values.Get(spreadsheetID, readRange).Do()
@@ -123,11 +122,34 @@ func main() {
 
 	// 	charity = strings.TrimSuffix(charity, ", ")
 	// 	charity = "{" + charity + "}"
-	// 	// insertCharity := db.InsertCharity(charity)
-	// 	// fmt.Println(insertCharity)
-	// }
-	// db.SelectAllCharities()
-	// response := db.SelectCharity(1)
 
+	// 	// charityJson := json.RawMessage(charity)
+	// 	// b, err := json.MarshalIndent(&charityJson, "", "\t")
+	// 	// if err != nil {
+	// 	// 	fmt.Println("error:", err)
+	// 	// }
+	// 	// fmt.Printf("%T\n", b)
+	// 	// os.Stdout.Write()
+
+	// 	// newJson := &db.CharityJSON{}
+	// 	// err = json.Unmarshal([]byte(charity), newJson)
+	// 	// if err != nil {
+	// 	// 	panic(err.Error())
+	// 	// }
+
+	// 	// fmt.Printf("%T\n", b)
+
+	// 	// for _, row := range resp.Values {
+	// 	// 	var key, val string
+	// 	// 	key = strings.ReplaceAll(fmt.Sprintf("%s", row[0]), "\"", "'")
+	// 	// 	val = strings.ReplaceAll(fmt.Sprintf("%s", row[1]), "\"", "'")
+	// 	// 	val = strings.ReplaceAll(fmt.Sprintf("%s", val), "\n", "")
+	// 	// 	charity = append(charity, key, val)
+	// 	// }
+	// 	// fmt.Println(charity)
+	// 	insertCharity := db.InsertData(charity)
+	// 	fmt.Println(insertCharity)
+	// }
 	server.ServerConnect()
+
 }
