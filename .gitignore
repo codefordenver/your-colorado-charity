@@ -20,6 +20,10 @@
 
 npm-debug.log*
 yarn-debug.log*
+<<<<<<< HEAD
 yarn-error.log*token.json
 credentials2.json
 token.json
+=======
+yarn-error.log*
+>>>>>>> bfbff4d0d9afd5e0f237587d2fbeae66e7007fc9
