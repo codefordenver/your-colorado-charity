@@ -1,0 +1,12 @@
+.Home {
+  height: 100vh;
+  width: 100%;
+  background-image: url('https://www.homestratosphere.com/wp-content/uploads/2019/07/Rocky-Mountain-Columbine.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1.5rem;
+}

@@ -1,0 +1,137 @@
+.AnimatedBtn {
+  height: 2.5rem;
+  width: 3.5rem;  
+  z-index: 100;
+  right: 1.5rem;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0 0.25rem;
+}
+
+.AnimatedBtn__span {
+  height: 0.3rem;
+  width: 100%;
+  background-color: rgba(66, 5, 61, 0.95);
+  border-radius: 10px;
+}
+
+/* Add active class animation */
+
+.AnimatedBtn.active :first-child {
+  animation-name: topSpanActivate;
+  animation-duration: 250ms;
+  animation-fill-mode: forwards;
+}
+
+.AnimatedBtn.active :nth-child(2) {
+  animation-name: middleSpanActivate;
+  animation-duration: 250ms;
+  animation-fill-mode: forwards;
+}
+
+.AnimatedBtn.active :last-child {
+  animation-name: bottomSpanActivate;
+  animation-duration: 250ms;
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes topSpanActivate {
+  0% {
+    background-color: rgba(66, 5, 61, 0.95);
+  }
+  75% {
+    transform: translateY(233%) rotate(0);
+  }
+  100% {
+    transform: translateY(233%) rotate(45deg);
+    background-color: gold;
+  }
+}
+
+@keyframes middleSpanActivate {
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bottomSpanActivate {
+  0% {
+    background-color: rgba(66, 5, 61, 0.95);
+  }
+  75% {
+    transform: translateY(-233%) rotate(0);
+  }
+  100% {
+    transform: translateY(-233%) rotate(-45deg);
+    background-color: gold;
+  }
+}
+
+/* Remove active class animation */
+
+.AnimatedBtn :first-child {
+  animation-name: topSpanDeactivate;
+  animation-duration: 250ms;
+  animation-fill-mode: forwards;
+}
+
+.AnimatedBtn :nth-child(2) {
+  animation-name: middleSpanDeactivate;
+  animation-duration: 250ms;
+  animation-fill-mode: forwards;
+}
+
+.AnimatedBtn :last-child {
+  animation-name: bottomSpanDeactivate;
+  animation-duration: 250ms;
+  animation-fill-mode: forwards;
+} 
+
+@keyframes topSpanDeactivate {
+  0% {
+    transform: translateY(233%) rotate(45deg);
+    background-color: gold;
+  }
+  75% {
+    transform: translateY(233%) rotate(0);
+    background-color: gold;
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+    background-color: rgba(66, 5, 61, 0.95);
+  }
+}
+
+@keyframes middleSpanDeactivate {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes bottomSpanDeactivate {
+  0% {
+    transform: translateY(-233%) rotate(-45deg);
+    background-color: gold;
+  }
+  75% {
+    transform: translateY(-233%) rotate(0);
+    background-color: gold;
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+    background-color: rgba(66, 5, 61, 0.95);
+  }
+}

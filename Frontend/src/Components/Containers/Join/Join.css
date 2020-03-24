@@ -1,0 +1,23 @@
+.Join {
+  height: 150vh;
+  width: 100%;
+  background-color: orchid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1.5rem;
+}
+
+.Join__h1 {
+  font-size: 3rem;
+  margin: 4rem 0;
+}
+
+.Join__p {
+  margin: 2rem 0;
+}
+
+.Join__a {
+  font-size: 2rem;
+}

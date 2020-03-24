@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  width: fit-content;
+  margin: 0;
+}

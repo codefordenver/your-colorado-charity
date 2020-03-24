@@ -1,0 +1,24 @@
+{
+  "orgs": [
+    {
+      "name": "Code For Denver",
+      "cardIntro": "This is an area for Code For Denver to give a sentence or two about their brand, target community, and services"
+    },
+    {
+      "name": "Denver Public Library",
+      "cardIntro": "This is an area for Denver Public Library to give a sentence or two about their brand, target community, and services"
+    },
+    {
+      "name": "Denver Public Zoo",
+      "cardIntro": "This is an area for Denver Public Zoo to give a sentence or two about their brand, target community, and services"
+    },
+    {
+      "name": "Hawthorn",
+      "cardIntro": "This is an area for Hawthorn to give a sentence or two about their brand, target community, and services"
+    },
+    {
+      "name": "Oxford House",
+      "cardIntro": "This is an area for Oxford House to give a sentence or two about their brand, target community, and services"
+    }
+  ]
+}
