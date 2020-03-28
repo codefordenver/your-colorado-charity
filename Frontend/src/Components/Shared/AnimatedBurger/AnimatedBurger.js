@@ -6,16 +6,17 @@ const AnimatedBurger = props => {
   const [cn, setCn] = useState('AnimatedBtn')
 
   const clickHandler = () => {
-    if (cn === 'AnimatedBtn') {
+    if (cn === 'AnimatedBtn' || cn === 'AnimatedBtn deactive') {
       setCn('AnimatedBtn active')
       props.setShowNav()
-    } else if (cn === 'AnimatedBtn active') {
+    } else {
       setCn('AnimatedBtn deactive')
       props.setShowNav()
-    } else if (cn === 'AnimatedBtn deactive') {
-      setCn('AnimatedBtn active')
-      props.setShowNav()
     }
+  };
+
+  if (!props.showNav && cn === 'AnimatedBtn active') {
+    setCn('AnimatedBtn deactive')
   }
 
   return (
