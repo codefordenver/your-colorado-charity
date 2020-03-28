@@ -5,7 +5,6 @@
 ### Tech Stack
 Front End
 - React
-	- Prime React - Node package for React components
 
 Back End
 - Google Sheets

@@ -22,7 +22,7 @@ CSS NAMING CONVENTIONS:
 
   JS file:
 
-<!-- 
+
   return (
     <div className="ComponentName" id="someId">
       <h1 className="ComponentName__h1">Some content</h1>
@@ -30,10 +30,9 @@ CSS NAMING CONVENTIONS:
       <a className="ComponentName__a">Some content</a>
     </div>
   )
- -->
+
 
   CSS file:
-<!-- 
 
   .ComponentName {
     ...styles
@@ -50,7 +49,6 @@ CSS NAMING CONVENTIONS:
   .ComponentName__a {
     ...styles
 
-  } -->
 
 1. All styling is assigned to classes. Not to id's nor to tags. This prevents naming and styling clashes.
 2. The className of the outer-most element is the component name.

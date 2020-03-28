@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './AnimatedBurger.css';
 
 const AnimatedBurger = props => {
-  let classname;
-  props.showNav ? classname = 'AnimatedBtn active' : classname = 'AnimatedBtn'; 
+  const [cn, setCn] = useState('AnimatedBtn')
+
+  const clickHandler = () => {
+    if (cn === 'AnimatedBtn') {
+      setCn('AnimatedBtn active')
+      props.setShowNav()
+    } else if (cn === 'AnimatedBtn active') {
+      setCn('AnimatedBtn deactive')
+      props.setShowNav()
+    } else if (cn === 'AnimatedBtn deactive') {
+      setCn('AnimatedBtn active')
+      props.setShowNav()
+    }
+  }
 
   return (
     <div 
-      className={classname}
-      onClick={props.setShowNav} >
+      className={cn}
+      onClick={clickHandler} >
       <span className="AnimatedBtn__span" />
       <span className="AnimatedBtn__span" />
       <span className="AnimatedBtn__span" />

@@ -18,6 +18,68 @@
   border-radius: 10px;
 }
 
+/* Remove active class animation */
+
+.AnimatedBtn.deactive :first-child {
+  animation-name: topSpanDeactivate;
+  animation-duration: 250ms;
+  animation-fill-mode: forwards;
+}
+
+.AnimatedBtn.deactive :nth-child(2) {
+  animation-name: middleSpanDeactivate;
+  animation-duration: 250ms;
+  animation-fill-mode: forwards;
+}
+
+.AnimatedBtn.deactive :last-child {
+  animation-name: bottomSpanDeactivate;
+  animation-duration: 250ms;
+  animation-fill-mode: forwards;
+} 
+
+@keyframes topSpanDeactivate {
+  0% {
+    transform: translateY(233%) rotate(45deg);
+    background-color: gold;
+  }
+  75% {
+    transform: translateY(233%) rotate(0);
+    background-color: gold;
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+    background-color: rgba(66, 5, 61, 0.95);
+  }
+}
+
+@keyframes middleSpanDeactivate {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes bottomSpanDeactivate {
+  0% {
+    transform: translateY(-233%) rotate(-45deg);
+    background-color: gold;
+  }
+  75% {
+    transform: translateY(-233%) rotate(0);
+    background-color: gold;
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+    background-color: rgba(66, 5, 61, 0.95);
+  }
+}
+
 /* Add active class animation */
 
 .AnimatedBtn.active :first-child {
@@ -71,67 +133,5 @@
   100% {
     transform: translateY(-233%) rotate(-45deg);
     background-color: gold;
-  }
-}
-
-/* Remove active class animation */
-
-.AnimatedBtn :first-child {
-  animation-name: topSpanDeactivate;
-  animation-duration: 250ms;
-  animation-fill-mode: forwards;
-}
-
-.AnimatedBtn :nth-child(2) {
-  animation-name: middleSpanDeactivate;
-  animation-duration: 250ms;
-  animation-fill-mode: forwards;
-}
-
-.AnimatedBtn :last-child {
-  animation-name: bottomSpanDeactivate;
-  animation-duration: 250ms;
-  animation-fill-mode: forwards;
-} 
-
-@keyframes topSpanDeactivate {
-  0% {
-    transform: translateY(233%) rotate(45deg);
-    background-color: gold;
-  }
-  75% {
-    transform: translateY(233%) rotate(0);
-    background-color: gold;
-  }
-  100% {
-    transform: translateY(0) rotate(0);
-    background-color: rgba(66, 5, 61, 0.95);
-  }
-}
-
-@keyframes middleSpanDeactivate {
-  0% {
-    opacity: 0;
-  }
-  75% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes bottomSpanDeactivate {
-  0% {
-    transform: translateY(-233%) rotate(-45deg);
-    background-color: gold;
-  }
-  75% {
-    transform: translateY(-233%) rotate(0);
-    background-color: gold;
-  }
-  100% {
-    transform: translateY(0) rotate(0);
-    background-color: rgba(66, 5, 61, 0.95);
   }
 }
