@@ -12,7 +12,6 @@ import './App.css';
 const App = () => {
   const [enteredSite, setEnteredSite] = useState(false);
 
-  console.log(enteredSite)
   let page;
   !enteredSite ?
     page = (
