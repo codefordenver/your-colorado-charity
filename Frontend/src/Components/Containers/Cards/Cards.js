@@ -14,6 +14,7 @@ const Cards = props => {
       cardIntro={org.cardIntro}
       key={data.orgs.indexOf(org)} 
       name={org.name}
+      setEnteredSite={props.setEnteredSite}
       showNav={props.showNav} />
   )
 

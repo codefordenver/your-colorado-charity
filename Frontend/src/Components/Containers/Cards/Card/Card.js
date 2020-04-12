@@ -9,7 +9,7 @@ const Card = props => {
       <h3 className="Card__h3">{props.cardIntro}</h3>
       <button 
         className="Card__button"
-        onClick={() => alert(`Entering ${props.name}'s personalized site`)}>
+        onClick={() => props.setEnteredSite(true)}>
         Learn More
       </button>
     </div>
